@@ -1,10 +1,10 @@
 # Changelog
 
-## [Unreleased] — local documentation preparation
+## [Unreleased] — documentation and behavioral evaluation preparation
 
 - Đồng bộ current status sau merge; giữ historical reports/snapshots nguyên byte.
 - Chuẩn bị49 behavioral case variants, runtime/risk/scoring/evidence protocol; tất cả NOT_RUN, chưa có model evaluation.
-- Revision tài liệu này chưa publish; không thay core/skill version hoặc default permissions.
+- Publication trên feature branch, PR merge và CI của đúng HEAD được theo dõi tại [current status có timestamp](docs/STATUS_CURRENT.md); không thay core/skill version hoặc default permissions. Giữ snapshot audit trước publication nguyên byte.
 
 ## [1.1.0] — integrated on main, candidate chưa stable release
 

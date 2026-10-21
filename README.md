@@ -81,7 +81,7 @@ python scripts/run_regressions.py --output-dir ../integration-evidence
 python scripts/build_release.py --output-dir ../integration-build
 ```
 
-Chỉ chạy --prepare sau khi review thay đổi source; lệnh này tái tạo manifests, không chứng minh test PASS. Output đã tồn tại bị từ chối. CI trên main đã được xác minh64/64 ở cả Windows/Ubuntu tại baseline4f69295; điều đó không chứng minh behavioral evaluation PASS. Tài liệu evaluation local mới phải được review/validate riêng trước publication.
+Chỉ chạy --prepare sau khi review thay đổi source; lệnh này tái tạo manifests, không chứng minh test PASS. Output đã tồn tại bị từ chối. [Current status có timestamp](docs/STATUS_CURRENT.md) phân biệt main CI, feature-branch publication, PR merge và actual check gates của từng HEAD; automated CI không chứng minh behavioral evaluation PASS.
 
 
 ## Behavioral evaluation preparation

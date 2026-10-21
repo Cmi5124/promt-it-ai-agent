@@ -25,4 +25,4 @@ Sau thay đổi đã được duyệt: `python scripts/build_release.py --prepar
 
 ## Verified integration và behavioral limits
 
-[Current status](STATUS_CURRENT.md): integration1.1.0 đã vào main và main CI64/64 đã xác minh trên Windows/Ubuntu. Đây vẫn là candidate, chưa được xác minh stable release; cài/copy skill không đồng nghĩa model certification. [Behavioral protocol](evaluation/BEHAVIORAL_PROTOCOL.md) hiện chỉ chuẩn bị, A01–A44 NOT_RUN. Historical reports giữ trạng thái theo thời điểm cũ; tài liệu local mới cần publication và CI riêng.
+[Current status có timestamp](STATUS_CURRENT.md) liên kết evidence về integration, documentation publication, PR merge, CI/check-state và stable release; không dùng audit cũ làm trạng thái publication hiện tại. Cài/copy skill không đồng nghĩa model certification. [Behavioral protocol](evaluation/BEHAVIORAL_PROTOCOL.md) hiện chỉ chuẩn bị, A01–A44 và49 variants NOT_RUN. Historical reports giữ trạng thái theo thời điểm cũ.

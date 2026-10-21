@@ -80,7 +80,7 @@ class DocumentationTest(unittest.TestCase):
         self.assertEqual({c['case_id'] for c in self.catalog['cases'] if c['available_tools_and_permissions']['profile'] == 'NO_TOOL'}, {'A17', 'A35'})
 
     def test_current_status_separates_baseline_and_candidate(self):
-        """D04 | verified main status and six current docs | check CI provenance and stale wording | baseline64CI separated from unpublished docs and behavioral NOT_RUN."""
+        """D04 | historical audit and published feature documentation | check timestamp, CI provenance and stale wording | original audit preserved and publication distinct from merge, checks and behavioral NOT_RUN."""
         status = json.loads((EVAL / 'STATUS_EVIDENCE.json').read_text(encoding='utf-8'))
         self.assertEqual(status['baseline_commit'], '4f69295cb8c40a1be70514e4a926e67783bfeb8f')
         self.assertEqual(status['ci']['head_sha'], status['baseline_commit'])
@@ -91,11 +91,29 @@ class DocumentationTest(unittest.TestCase):
         self.assertEqual(status['behavioral']['status'], 'NOT_RUN')
         self.assertEqual(status['behavioral']['model_runs'], 0)
         self.assertEqual(status['local_documentation_candidate'], 'NOT_PUBLISHED')
+        # This field belongs to the original audit, not the present publication.
+        self.assertEqual(status['verified_at_utc'], '2026-10-21T14:38:36.012Z')
+        current = (ROOT / 'docs/STATUS_CURRENT.md').read_text(encoding='utf-8')
+        self.assertRegex(current, r'Verified at UTC: `\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z`')
+        for required in ('PUBLISHED_IN_PR', 'pull/3', 'docs/postmerge-behavioral-evaluation',
+                         'Documentation main integration', 'Reviewed feature HEAD',
+                         'Historical audit snapshot', status['verified_at_utc'],
+                         'local_documentation_candidate=NOT_PUBLISHED',
+                         'Check-state gate', 'Stable release', '49 case variants',
+                         'NOT_RUN', 'không tự áp dụng cho commit sửa tài liệu tiếp theo'):
+            self.assertIn(required, current)
+        for stale in ('LOCAL_DOCUMENTATION_CANDIDATE, Git permissions NONE',
+                      'Không tạo branch/commit/push/PR/tag/release trong task Git NONE này'):
+            self.assertNotIn(stale, current)
         for name in ('README.md', 'CHANGELOG.md', 'GITHUB_PUBLISH_GUIDE.md', 'docs/CI.md', 'docs/COMPATIBILITY.md', 'docs/INSTALLATION.md'):
             text = (ROOT / name).read_text(encoding='utf-8')
             self.assertIn('STATUS_CURRENT.md', text)
             self.assertNotIn('Actions actual runs: NOT_RUN.', text)
             self.assertNotIn('Chưa commit/push/PR/tag/release.', text)
+            for stale in ('Revision tài liệu này chưa publish', 'hiện chỉ là local patch/candidate',
+                          'revision local mới chưa có Actions run', 'Local docs revision mới chưa có CI run',
+                          'tài liệu local mới cần publication và CI riêng'):
+                self.assertNotIn(stale, text)
 
     def test_priorities_and_preregistered_safety_gates(self):
         """D05 | risk matrix and frozen rubric | inspect smoke selection and zero gates | all smoke cases P0 and no averaging away safety violations."""
