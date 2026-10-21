@@ -1,0 +1,114 @@
+test_all_repository_links (test_integration.IntegrationTest.test_all_repository_links)
+I08 | integrated docs and archives | validate local Markdown references | zero required broken links. ... ok
+test_build_reproducibility (test_integration.IntegrationTest.test_build_reproducibility)
+I07 | fixed canonical source | build twice in fresh external directories | both ZIP hashes reproducible. ... ok
+test_ci_has_no_actions_secrets_or_write (test_integration.IntegrationTest.test_ci_has_no_actions_secrets_or_write)
+I09 | local workflow candidate | inspect permission and OS policy | two OS no external actions secrets write or release. ... ok
+test_contract_synchronized_current_documents (test_integration.IntegrationTest.test_contract_synchronized_current_documents)
+I02 | approved current contract | compare eight documents | same artifact limits and no repeat approval. ... ok
+test_immutable_snapshot_tamper_detected (test_integration.IntegrationTest.test_immutable_snapshot_tamper_detected)
+I11 | protected snapshot fixture | alter v1.0.0 bytes | preservation failure. ... ok
+test_incomplete_scope_does_not_grant_authority (test_integration.IntegrationTest.test_incomplete_scope_does_not_grant_authority)
+I10 | static current contract | check unauthorized artifacts and product protections | limits and lifecycle retained. ... ok
+test_old_artifact_prohibition_is_rejected (test_integration.IntegrationTest.test_old_artifact_prohibition_is_rejected)
+I03 | current task template | restore absolute no-change sentence | conflict detected. ... ok
+test_preserve_upstream_and_imported_content (test_integration.IntegrationTest.test_preserve_upstream_and_imported_content)
+I01 | audited upstream and imports | compare SHA-256 | protected files and skill functionality unchanged. ... ok
+test_public_tree_static_review (test_integration.IntegrationTest.test_public_tree_static_review)
+I05 | source publish tree | heuristic path/secret/history scan | no flags in reviewed source. ... ok
+test_publication_scan_environment_failure (test_integration.IntegrationTest.test_publication_scan_environment_failure)
+I12 | mocked permission failure | enumerate source tree | error propagates rather than false PASS. ... ok
+test_synthetic_sensitive_text_is_rejected (test_integration.IntegrationTest.test_synthetic_sensitive_text_is_rejected)
+I06 | synthetic marker only | introduce fake credential and home path | detect without printing contents. ... ok
+test_version_and_legal_metadata (test_integration.IntegrationTest.test_version_and_legal_metadata)
+I04 | integrated manifests and licenses | inspect versions and legal scope | repo 1.1.0 candidate skill 1.2.1 Apache copies match. ... ok
+test_cp1252_json_fallback (test_maintenance.MaintenanceCLITest.test_cp1252_json_fallback)
+U06 | redirected cp1252 strict stdout | all CLI modes | parseable escaped JSON. ... ok
+test_emoji_search (test_maintenance.MaintenanceCLITest.test_emoji_search)
+U03 | emoji in description | search 🔒 | exact Unicode description retained. ... ok
+test_invalid_list_entry (test_maintenance.MaintenanceCLITest.test_invalid_list_entry)
+U11 | mixed JSON array | object plus scalar | controlled BLOCKED exit 2. ... ok
+test_limit_boundaries (test_maintenance.MaintenanceCLITest.test_limit_boundaries)
+U10 | valid index | limits 1/50/51/-1 | accept only inclusive valid range. ... ok
+test_missing_unicode_path_cp1252 (test_maintenance.MaintenanceCLITest.test_missing_unicode_path_cp1252)
+U15 | nonexistent Unicode path, cp1252 stderr | search | controlled exit 2, no traceback. ... ok
+test_normalization_all_search_fields (test_maintenance.MaintenanceCLITest.test_normalization_all_search_fields)
+U04 | one populated weighted field | STRASSE | each field searchable. ... ok
+test_permission_denied_read (test_maintenance.MaintenanceCLITest.test_permission_denied_read)
+U12 | mocked OS denial | open index | controlled BLOCKED with no file mutation. ... ok
+test_query_length_boundary (test_maintenance.MaintenanceCLITest.test_query_length_boundary)
+U09 | valid index | lengths 160/161 | exit 0 then controlled exit 2. ... ok
+test_resource_limits (test_maintenance.MaintenanceCLITest.test_resource_limits)
+U13 | bounded fixture thresholds | oversize bytes/entry count | reject both limits. ... ok
+test_search_deterministic_ascii_ranking (test_maintenance.MaintenanceCLITest.test_search_deterministic_ascii_ranking)
+U14 | original ranking weights | repeated ASCII search | active specific candidate first. ... ok
+test_stdout_without_encoding (test_maintenance.MaintenanceCLITest.test_stdout_without_encoding)
+U08 | StringIO stdout | print Unicode object | valid JSON without encoding attribute. ... ok
+test_strasse_casefold (test_maintenance.MaintenanceCLITest.test_strasse_casefold)
+U01 | Unicode index | Straße/STRASSE/strasse | same original entry. ... ok
+test_unicode_filters (test_maintenance.MaintenanceCLITest.test_unicode_filters)
+U05 | Unicode filters | decomposed category/language | one match. ... ok
+test_utf8_json_preserves_literal_unicode (test_maintenance.MaintenanceCLITest.test_utf8_json_preserves_literal_unicode)
+U07 | redirected UTF-8 strict stdout | Unicode metadata | literal bytes and valid JSON. ... ok
+test_vietnamese_composed_and_decomposed (test_maintenance.MaintenanceCLITest.test_vietnamese_composed_and_decomposed)
+U02 | NFD name | NFC/NFD query | match and preserve original codepoints. ... ok
+test_all_local_references (test_packaging.PackagingTest.test_all_local_references)
+P11 | full bundle and nested skill | inspect all local Markdown references | zero broken links. ... ok
+test_broken_markdown_link_detected (test_packaging.PackagingTest.test_broken_markdown_link_detected)
+P12 | required reference | add absent Markdown target | precise link failure. ... ok
+test_build_zip_integrity (test_packaging.PackagingTest.test_build_zip_integrity)
+P18 | validated bundle | build two archives outside root | CRC, matching skill and zero local link errors. ... ok
+test_builder_preserves_existing_output (test_packaging.PackagingTest.test_builder_preserves_existing_output)
+P20 | existing artifact | same output name | BLOCKED without overwrite. ... ok
+test_builder_refuses_invalid_source (test_packaging.PackagingTest.test_builder_refuses_invalid_source)
+P19 | modified unprepared source | build archives | nonzero and no ZIP produced. ... ok
+test_changed_file_detected (test_packaging.PackagingTest.test_changed_file_detected)
+P07 | tracked README | append one byte | FAIL with changed hash evidence. ... ok
+test_environment_folder_not_silently_ignored (test_packaging.PackagingTest.test_environment_folder_not_silently_ignored)
+P21 | unlisted .venv fixture | validator | still rejects non-Git metadata files. ... ok
+test_git_metadata_pruned (test_packaging.PackagingTest.test_git_metadata_pruned)
+P04 | .git with invalid Markdown bytes | validator | never traverses Git metadata. ... ok
+test_git_text_checkout_stability (test_packaging.PackagingTest.test_git_text_checkout_stability)
+P22 | hashed text and LF checkout rules | prepare manifests | every packaged text uses LF. ... ok
+test_gitignored_file_still_detected (test_packaging.PackagingTest.test_gitignored_file_still_detected)
+P06 | .gitignore ignores .env | add synthetic .env | manifest still rejects file. ... ok
+test_instruction_conflict_detected (test_packaging.PackagingTest.test_instruction_conflict_detected)
+P16 | valid Gemma adapter | reintroduce old command prohibition | static check rejects conflict. ... ok
+test_instruction_contract_and_not_run (test_packaging.PackagingTest.test_instruction_contract_and_not_run)
+P15 | core/task/integrations/adaptive/A01-A44 | static consistency check | consistent contract and all models NOT_RUN. ... ok
+test_missing_file_detected (test_packaging.PackagingTest.test_missing_file_detected)
+P08 | tracked README | move outside bundle | FAIL with missing-file evidence. ... ok
+test_outside_package_reference_rejected (test_packaging.PackagingTest.test_outside_package_reference_rejected)
+P13 | existing external fixture | link outside package | reject without importing external content. ... ok
+test_prepare_syncs_canonical (test_packaging.PackagingTest.test_prepare_syncs_canonical)
+P17 | edited canonical fixture | --prepare | byte-identical copy and refreshed valid manifests. ... ok
+test_pristine_validator (test_packaging.PackagingTest.test_pristine_validator)
+P01 | pristine bundle | validator | PASS before Git initialization. ... ok
+test_standalone_copy_and_cli (test_packaging.PackagingTest.test_standalone_copy_and_cli)
+P14 | copy only skill into isolated location | validate resources and run CLI | independent success. ... ok
+test_template_copies_match_canonical (test_packaging.PackagingTest.test_template_copies_match_canonical)
+P09 | root canonical templates | compare all ten copies | exact bytes and no missing dependency. ... ok
+test_template_divergence_detected (test_packaging.PackagingTest.test_template_divergence_detected)
+P10 | standalone template copy | append one byte | validator reports divergence. ... ok
+test_unlisted_file_detected (test_packaging.PackagingTest.test_unlisted_file_detected)
+P05 | pristine bundle | add unexpected.txt | FAIL with new-file evidence. ... ok
+test_validator_after_git_init (test_packaging.PackagingTest.test_validator_after_git_init)
+P02 | temp bundle and installed Git | git init then validator | PASS with same source hashes. ... ok
+test_worktree_git_file (test_packaging.PackagingTest.test_worktree_git_file)
+P03 | synthetic worktree .git file | validator | metadata ignored without reading target. ... ok
+test_boundary_invalid_limit (test_reuse_catalog.ReuseCatalogTest.test_boundary_invalid_limit) ... ok
+test_boundary_no_hits (test_reuse_catalog.ReuseCatalogTest.test_boundary_no_hits) ... ok
+test_categories (test_reuse_catalog.ReuseCatalogTest.test_categories) ... ok
+test_dependency_missing_index (test_reuse_catalog.ReuseCatalogTest.test_dependency_missing_index) ... ok
+test_filter_category_language (test_reuse_catalog.ReuseCatalogTest.test_filter_category_language) ... ok
+test_inspect_repo (test_reuse_catalog.ReuseCatalogTest.test_inspect_repo) ... ok
+test_invalid_corrupt_json (test_reuse_catalog.ReuseCatalogTest.test_invalid_corrupt_json) ... ok
+test_invalid_entry_shape (test_reuse_catalog.ReuseCatalogTest.test_invalid_entry_shape) ... ok
+test_missing_license_is_marked_not_verified (test_reuse_catalog.ReuseCatalogTest.test_missing_license_is_marked_not_verified) ... ok
+test_normal_search_ranks_active_specific_candidate (test_reuse_catalog.ReuseCatalogTest.test_normal_search_ranks_active_specific_candidate) ... ok
+test_security_metadata_is_inert_not_executed (test_reuse_catalog.ReuseCatalogTest.test_security_metadata_is_inert_not_executed) ... ok
+
+----------------------------------------------------------------------
+Ran 60 tests in 22.792s
+
+OK

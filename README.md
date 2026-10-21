@@ -63,3 +63,22 @@ Dự án dùng semantic versioning:
 ## License
 
 Project được phát hành theo [Apache License 2.0](LICENSE). File `LICENSE` là nguồn quy định giấy phép; repository không tạo thêm giấy phép hay `NOTICE` mới.
+
+## Framework integration candidate — repository 1.1.0 / skill 1.2.1
+
+Bổ sung khả năng điều phối đa dự án, không khóa vào một sản phẩm. Repository 1.1.0 là candidate chưa phát hành; core prompt được đồng bộ contract ở 1.1.0 candidate, skill vẫn là 1.2.1. Bản đầy đủ, compact và snapshot v1.0.0 được lưu theo [compatibility matrix](docs/COMPATIBILITY.md).
+
+- [Cài và dùng skill](docs/INSTALLATION.md), [usage ba runtime](integrations/ADAPTIVE-USAGE.md), [contract](docs/INSTRUCTION_CONTRACT.md).
+- [Skill canonical](skills/adaptive-project-ops/SKILL.md), [Security Engineering S0–S7](skills/adaptive-project-ops/references/17-security-engineering.md), [Test Engineering T0–T8](skills/adaptive-project-ops/references/18-test-engineering.md), [Security Verification V0–V7](skills/adaptive-project-ops/references/19-security-verification.md).
+- [Conflict matrix](docs/CONFLICT_MATRIX.md), [public provenance](docs/adaptive/PROVENANCE.md), [third-party notices](THIRD_PARTY_NOTICES.md), [bảo trì](docs/MAINTENANCE.md), [CI](docs/CI.md), [publication guide](GITHUB_PUBLISH_GUIDE.md).
+
+Canonical skill source là skills/adaptive-project-ops. Các template nghiệp vụ có một nguồn authoring tại templates/; builder copy đúng mười file được tham chiếu vào assets của skill, validator kiểm tra byte equality. Không sửa bản copy thủ công. Scripts và tests root dùng đường dẫn canonical skills; standalone không phụ thuộc repo root hoặc symlink.
+
+```text
+python scripts/validate_repository.py
+python -m unittest discover -s tests -p 'test_*.py' -v
+python scripts/run_regressions.py --output-dir ../integration-evidence
+python scripts/build_release.py --output-dir ../integration-build
+```
+
+Chỉ chạy --prepare sau khi review thay đổi source; lệnh này tái tạo manifests, không chứng minh test PASS. Output đã tồn tại bị từ chối. CI trên GitHub chưa được thực thi chỉ vì có workflow local.

@@ -1,0 +1,29 @@
+# Optional per-task/project overrides, NOT a permanent profile and NOT mandatory.
+# Store in project-specific environment only after user approval.
+profile_id: example-project
+status: proposed
+operating_mode: ANALYZE_ONLY
+language: vi
+project_type: unspecified
+business_goal: null
+scope:
+  included: []
+  excluded: []
+acceptance_criteria: []
+authority:
+  can_modify_files: false
+  can_run_non_destructive_tests: false
+  can_commit: false
+  can_push: false
+  can_deploy: false
+  can_delete: false
+architecture_constraints:
+  local_first: null
+  external_inference_allowed: null
+  framework_policy: prefer_existing
+sources:
+  authoritative: []
+  decisions: []
+  evidence: []
+gates: []
+resource_limits: {}

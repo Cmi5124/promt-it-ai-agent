@@ -1,0 +1,46 @@
+name: Validate integration
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Checkout public event revision without external actions
+        env:
+          VALIDATION_REPOSITORY: ${{ github.repository }}
+          VALIDATION_SHA: ${{ github.sha }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          git init checkout
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git -C checkout remote add origin "https://github.com/$env:VALIDATION_REPOSITORY.git"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git -C checkout fetch --depth=1 origin $env:VALIDATION_SHA
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git -C checkout checkout --detach FETCH_HEAD
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Validate and test editable source
+        working-directory: checkout
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python --version
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python scripts/validate_repository.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m compileall -q scripts skills/adaptive-project-ops/scripts tests
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

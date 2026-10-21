@@ -5,6 +5,8 @@
 3. Có thể copy [mẫu AGENTS.md](AGENTS.example.md), thay placeholder bằng đường dẫn local hợp lệ và bổ sung rule riêng nghiêm ngặt hơn.
 4. Nêu mode, phạm vi, acceptance criteria và quyền Git trong task.
 5. Để dừng sau phân tích, yêu cầu `ANALYZE_ONLY` và `Git permissions: NONE`.
-6. Chỉ yêu cầu implementation sau khi plan/scope được phê duyệt. Commit/push phải là quyền tường minh, không mặc định.
+6. Yêu cầu IMPLEMENT hiện tại đã đủ scope/quyền được coi là phê duyệt; không yêu cầu duyệt lại cùng phạm vi. Commit/push phải là quyền tường minh, không mặc định.
 
 Không để secret trong prompt. Khả năng truy cập repository, shell, Git hay URL phụ thuộc môi trường thực tế.
+
+Xem [contract tích hợp](../docs/INSTRUCTION_CONTRACT.md) và [cài skill](../docs/INSTALLATION.md).
