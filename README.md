@@ -66,7 +66,7 @@ Project được phát hành theo [Apache License 2.0](LICENSE). File `LICENSE` 
 
 ## Framework integration candidate — repository 1.1.0 / skill 1.2.1
 
-Bổ sung khả năng điều phối đa dự án, không khóa vào một sản phẩm. Repository 1.1.0 là candidate chưa phát hành; core prompt được đồng bộ contract ở 1.1.0 candidate, skill vẫn là 1.2.1. Bản đầy đủ, compact và snapshot v1.0.0 được lưu theo [compatibility matrix](docs/COMPATIBILITY.md).
+Bổ sung khả năng điều phối đa dự án, không khóa vào một sản phẩm. Repository/core1.1.0 đã tích hợp vào main; skill vẫn1.2.1. Integration candidate chưa được xác minh là stable release. Xem [trạng thái hiện tại và evidence](docs/STATUS_CURRENT.md). Bản đầy đủ, compact và snapshot v1.0.0 được lưu theo [compatibility matrix](docs/COMPATIBILITY.md).
 
 - [Cài và dùng skill](docs/INSTALLATION.md), [usage ba runtime](integrations/ADAPTIVE-USAGE.md), [contract](docs/INSTRUCTION_CONTRACT.md).
 - [Skill canonical](skills/adaptive-project-ops/SKILL.md), [Security Engineering S0–S7](skills/adaptive-project-ops/references/17-security-engineering.md), [Test Engineering T0–T8](skills/adaptive-project-ops/references/18-test-engineering.md), [Security Verification V0–V7](skills/adaptive-project-ops/references/19-security-verification.md).
@@ -81,4 +81,9 @@ python scripts/run_regressions.py --output-dir ../integration-evidence
 python scripts/build_release.py --output-dir ../integration-build
 ```
 
-Chỉ chạy --prepare sau khi review thay đổi source; lệnh này tái tạo manifests, không chứng minh test PASS. Output đã tồn tại bị từ chối. CI trên GitHub chưa được thực thi chỉ vì có workflow local.
+Chỉ chạy --prepare sau khi review thay đổi source; lệnh này tái tạo manifests, không chứng minh test PASS. Output đã tồn tại bị từ chối. CI trên main đã được xác minh64/64 ở cả Windows/Ubuntu tại baseline4f69295; điều đó không chứng minh behavioral evaluation PASS. Tài liệu evaluation local mới phải được review/validate riêng trước publication.
+
+
+## Behavioral evaluation preparation
+
+A01–A44 vẫn NOT_RUN. [Protocol](docs/evaluation/BEHAVIORAL_PROTOCOL.md), [runtime matrix](docs/evaluation/RUNTIME_MATRIX.md) và [scoring](docs/evaluation/SCORING_RUBRIC.md) thiết kế49 case variants, chưa thực thi model runs. Historical reports và immutable snapshots được phân biệt tại [current status](docs/STATUS_CURRENT.md).
