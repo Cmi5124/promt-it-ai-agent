@@ -1,6 +1,7 @@
 """Regression checks for portable resources, Git metadata and instruction contracts."""
 from __future__ import annotations
 
+from hashlib import sha256
 import json
 import os
 from pathlib import Path
@@ -206,9 +207,90 @@ class PackagingTest(unittest.TestCase):
         run = self.command("scripts/build_release.py", "--prepare")
         self.assertEqual(run.returncode, 0, run.stderr)
         for path in distribution_files(self.root):
-            if path.suffix in {".md", ".py", ".json", ".yaml", ".yml", ".txt"} or path.name in {".gitignore", ".gitattributes"}:
+            if path.suffix in {".md", ".py", ".json", ".yaml", ".yml", ".txt"} or path.name in {".gitignore", ".gitattributes", "LICENSE"}:
                 with self.subTest(path=path.relative_to(self.root)):
                     self.assertNotIn(b"\r\n", path.read_bytes())
+
+    def git_checkout_fixture(self, autocrlf):
+        """Commit and check out only an isolated temporary copy, without prepare."""
+        git = shutil.which("git")
+        if git is None:
+            self.skipTest("Git executable unavailable")
+        empty = self.folder / "empty-git-config"
+        empty.mkdir()
+        env = dict(os.environ, GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull,
+                   GIT_ATTR_NOSYSTEM="1", PYTHONIOENCODING="utf-8", PYTHONDONTWRITEBYTECODE="1")
+
+        def execute(cwd, *args):
+            cwd.resolve().relative_to(self.folder.resolve())
+            run = subprocess.run([git, "-c", f"core.hooksPath={empty}", "-c", f"core.attributesFile={os.devnull}",
+                                  "-c", f"init.templateDir={empty}", "-c", "commit.gpgsign=false", *args],
+                                 cwd=cwd, capture_output=True, timeout=30, env=env, check=False)
+            self.assertEqual(run.returncode, 0, run.stdout.decode(errors="replace") + run.stderr.decode(errors="replace"))
+            return run.stdout
+
+        execute(self.root, "init", "-q", "--initial-branch=fixture")
+        execute(self.root, "config", "core.autocrlf", "false")
+        execute(self.root, "add", "--all")
+        execute(self.root, "-c", "user.name=Packaging Regression", "-c", "user.email=fixture@example.invalid",
+                "commit", "-q", "-m", "Temporary checkout fixture")
+        checked = self.folder / "checked"
+        execute(self.folder, "clone", "-q", "--local", "--no-hardlinks", "--no-checkout", str(self.root), str(checked))
+        execute(checked, "config", "core.autocrlf", autocrlf)
+        execute(checked, "checkout", "-q", "fixture")
+        manifest = json.loads((self.root / "manifest.json").read_text(encoding="utf-8"))
+        for name in ("LICENSE", (SKILL_PATH / "LICENSE").as_posix()):
+            with self.subTest(autocrlf=autocrlf, path=name):
+                content = (checked / name).read_bytes()
+                self.assertEqual(content, execute(self.root, "show", "HEAD:" + name))
+                self.assertNotIn(b"\r\n", content)
+                self.assertEqual(sha256(content).hexdigest(), manifest["files"][name])
+        self.assertEqual(manifest_errors(checked), [])
+        self.assertEqual(manifest_errors(checked / SKILL_PATH), [])
+        run = subprocess.run([sys.executable, "scripts/validate_repository.py"], cwd=checked,
+                             capture_output=True, timeout=30, env=env, check=False)
+        self.assertEqual(run.returncode, 0, run.stdout.decode() + run.stderr.decode())
+
+    def test_real_git_checkout_without_autocrlf(self):
+        """P23 | isolated temporary Git commit | real checkout core.autocrlf=false | LICENSE blob/hash and both manifests preserved."""
+        self.git_checkout_fixture("false")
+
+    def test_real_git_checkout_with_autocrlf(self):
+        """P24 | isolated temporary Git commit | real checkout core.autocrlf=true | LICENSE blob/hash and both manifests preserved."""
+        self.git_checkout_fixture("true")
+
+    def test_license_content_tamper_rejected(self):
+        """P25 | valid root and standalone licenses | append synthetic bytes separately | validator rejects LICENSE content drift."""
+        for name in (Path("LICENSE"), SKILL_PATH / "LICENSE"):
+            with self.subTest(path=name):
+                path = self.root / name
+                original = path.read_bytes()
+                try:
+                    path.write_bytes(original + b"synthetic-license-tamper\n")
+                    run = self.validate()
+                    self.assertEqual(run.returncode, 1, run.stdout.decode() + run.stderr.decode())
+                    self.assertIn(b"LICENSE", run.stdout)
+                finally:
+                    path.write_bytes(original)
+
+    def test_incorrect_license_checksum_rejected(self):
+        """P26 | valid root and standalone manifests | replace only recorded LICENSE checksum | both manifest checks and validator reject mismatch."""
+        for bundle in (self.root, self.root / SKILL_PATH):
+            with self.subTest(bundle=bundle.relative_to(self.root)):
+                path = bundle / "manifest.json"
+                original = path.read_bytes()
+                license_bytes = (bundle / "LICENSE").read_bytes()
+                manifest = json.loads(original)
+                manifest["files"]["LICENSE"] = "0" * 64
+                try:
+                    path.write_text(json.dumps(manifest), encoding="utf-8")
+                    self.assertTrue(any("LICENSE" in error for error in manifest_errors(bundle)))
+                    run = self.validate()
+                    self.assertEqual(run.returncode, 1, run.stdout.decode() + run.stderr.decode())
+                    self.assertIn(b"LICENSE", run.stdout)
+                    self.assertEqual((bundle / "LICENSE").read_bytes(), license_bytes)
+                finally:
+                    path.write_bytes(original)
 
 
 if __name__ == "__main__":
