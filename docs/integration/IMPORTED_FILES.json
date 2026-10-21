@@ -1,0 +1,130 @@
+[
+  {
+    "path": "skills/adaptive-project-ops/references/01-requirements-architecture.md",
+    "sha256": "f6326e9e91f227965b403961c7bc4c660fcf29a6a8f6d716c07f6429fb5f982e"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/02-repository-engineering.md",
+    "sha256": "6f361730ff1bf5b07a8ff090cb47c22445c916988e6afac67dba352ef99c2e7a"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/03-debugging-root-cause.md",
+    "sha256": "50dd7eb3cfc7e436a38b4e06428d0473293fcda3bbe45965be4c2c0194034dc9"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/04-testing-security-release.md",
+    "sha256": "df271d726856a74ea64f49c1af8049c2704bc0a3bc5eeee2aa0eee27d83db70a"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/05-ai-llm-agent-systems.md",
+    "sha256": "160babdf23034dde05c5c3807d93908ffb2197d819a8e76576bc033d5daafa92"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/06-data-experiments.md",
+    "sha256": "d90e72bb77ecfc839726e6c4c30a459c805226063fda01b551a2ad70237fbbd5"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/07-tech-research-watch.md",
+    "sha256": "6d3a4741ea3bd0907428a12632ae372b24811f561e15de3f2bf1c43b9e51dd22"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/08-context-memory-skills.md",
+    "sha256": "d45686f0940eabf209ae0da431f22403f6534830f6054806426b96326afadc5a"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/09-project-governance.md",
+    "sha256": "d7c5d0636dc866b710d53deceddd175a7c7bc42cdd6740d02c977dbc2da5d57e"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/10-academic-reports.md",
+    "sha256": "b8fc210b474080ac09b6b71dc4bfe13398d88828a2f75cb040c2d666b800f321"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/11-hardware-runtime.md",
+    "sha256": "c7cdd8d8e000c7ae2afffb354fa012434b2b729e91dd11946dd11568c8577bf7"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/12-multimodal-encoding.md",
+    "sha256": "285b28563a5aa12d0625e00a603de4445291dc5993ea0ae5f823cda80840292c"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/13-reverse-engineering.md",
+    "sha256": "c07fe5c20b4dff047584904e10331dac91a4ae290092e9d6bfe66e592a7e6caa"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/14-agent-orchestration.md",
+    "sha256": "fce23dc225ab8dcc22a337685eeecba734fc8a299842c7e3da3c71a68653831f"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/15-domain-decision-systems.md",
+    "sha256": "58fd2386da681c88a10497ce67de6eaebb0812eb64b9d583993b1e7e60f5001f"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/16-evidence-source-protocol.md",
+    "sha256": "bb3265911805e3e70dc4d5b325645f46d575418137fb1c776c55b80631fa8cfd"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/17-security-engineering.md",
+    "sha256": "b42edefe1156578bd6ec9df793c9043ddf48a94eff4ec2cb100fd6cb8229f2d1"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/18-test-engineering.md",
+    "sha256": "a56069c172c812ea118c9b51cdda6c1c95bae4f940abb5c71fb0f9d1e9e3e4b1"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/19-security-verification.md",
+    "sha256": "0d0d1777d7e28cd5d2b7a48011484af6372e7820e2f1b05f8e1d83e23aeb06a3"
+  },
+  {
+    "path": "skills/adaptive-project-ops/references/20-open-source-reuse-discovery.md",
+    "sha256": "90635eb69e8f8c258a8636da54bbb398d0883ece0e6307053dcdb8ce8a962e66"
+  },
+  {
+    "path": "skills/adaptive-project-ops/scripts/reuse_catalog.py",
+    "sha256": "db4d09422dbd05ac15fe5abab5f771d9bc99fd47a2c6e0ba506840b79670a98c"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/DEFECT_REPORT.md",
+    "sha256": "491475138964e202f18f7b7f7dad12fb9f60b0358480e2a7373af575da15dcd4"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/OPEN_SOURCE_CANDIDATE_REVIEW.md",
+    "sha256": "86c4e9d6195452a1112654fd6e29d68a47c7ccf266706e4a57930f3b292121c4"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/RELEASE_GATE.md",
+    "sha256": "c54e2d42c8a5f1bfcfb25e0362618bf01c1a916abcd9e18e8a29cb2759f2c8f0"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/REQUIREMENT_TEST_MATRIX.md",
+    "sha256": "aa113287c09f4429900d96de6cbed0de4f6adc1f1a34cc28dedd6255a8ff9266"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/SECURITY_FINDING.md",
+    "sha256": "6da5d20f8fcc50b640c89c6b8bc59f948fb1e09f70b02de32015831fc5d41934"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/SECURITY_TEST_PLAN.md",
+    "sha256": "7ea889da15c3c05aa9d46970bb763d510b9756a6c1d23e2d461e39977ea1b012"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/SECURITY_THREAT_MODEL.md",
+    "sha256": "3e50c3bfb3a8e7c24a841837ef8d350adc3e05d2758e7f86c998755efd7745f5"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/TEST_CASES.md",
+    "sha256": "c4a8893d726da7db806d27a9bfc2a6c98eef9873c5aa244ca6adeced6cff394a"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/TEST_RUN_REPORT.md",
+    "sha256": "d07092556b2b1eccddad25ca51b7469824aa76978c4a875b1b0d6002e86c215b"
+  },
+  {
+    "path": "skills/adaptive-project-ops/assets/templates/TEST_STRATEGY.md",
+    "sha256": "7c629cd058f38c5b9d8dd467dd8857635c75faf21e98de14074ce0fc0fa6d0bd"
+  },
+  {
+    "path": "tests/test_reuse_catalog.py",
+    "sha256": "51d5ff622d8c0e6ba9f2bcdcdfa41871ed53121a2f667a6fbefceab5319f0135"
+  }
+]

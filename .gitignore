@@ -1,0 +1,26 @@
+# Python and tools
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+# Optional external catalogue data and test outputs
+data/entries.json
+.cache/
+outputs/
+*.log
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Optional local discovery copy; never part of canonical publish source
+.agents/skills/
