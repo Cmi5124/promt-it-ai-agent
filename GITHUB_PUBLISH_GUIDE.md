@@ -1,21 +1,17 @@
-# Publication guide — Owner review first
+# Publication guide — evidence and authorized updates
 
-Chưa commit/push/PR/tag/release. Candidate branch đề xuất: feat/adaptive-agent-skill-pack-v1.2.1, chưa tạo. Kiểm tra [contract](docs/INSTRUCTION_CONTRACT.md), [compatibility](docs/COMPATIBILITY.md), [provenance](docs/adaptive/PROVENANCE.md), [CI](docs/CI.md) và kết quả integration trước khi cấp quyền publish riêng.
+[Current status có timestamp](docs/STATUS_CURRENT.md) là nguồn tập trung cho main integration, feature-branch publication, PR merge, CI/check-state và stable release. Publication một PR không đồng nghĩa merge, release hoặc model certification; A01–A44 và49 behavioral variants vẫn NOT_RUN.
 
-Editable source và reproducible builder là source of truth; không đưa ZIP, raw logs, private research/history, credentials hay local generated discovery copies vào Git history. LICENSE gốc giữ nguyên; owned imported content áp dụng Apache-2.0 theo Owner, external references giữ rights riêng.
+Các câu “chưa commit/push/PR” trong [historical integration report](docs/integration/REPORT.md) mô tả task chuẩn bị trước publication, không phải trạng thái hiện tại. Không sửa lại historical records hoặc snapshots để đổi ngày/trạng thái.
 
-Sau khi Owner cấp quyền Git trong một task riêng, có thể thực hiện tuần tự các lệnh sau từ checkout đúng baseline. Đây là đề xuất, KHÔNG được chạy trong task integration hiện tại:
+## Publication và quyền của task
 
-```text
-git status --short
-git diff --check
-git switch -c feat/adaptive-agent-skill-pack-v1.2.1
-git diff
-git add --patch
-git diff --cached --stat
-git diff --cached --check
-git commit -m "feat: integrate adaptive agent skill pack v1.2.1"
-git push -u origin feat/adaptive-agent-skill-pack-v1.2.1
-```
+Documentation đã được publish trên feature branch qua PR được liên kết ở current status. Snapshot audit ban đầu vẫn giữ observation local/NOT_PUBLISHED theo timestamp cũ. Default Git permission của skill vẫn NONE; quyền sửa, commit và push feature branch trong task hiện tại đến từ Owner, không từ file hướng dẫn này. Merge, direct push main, rebase/reset/force-push/tag/release không được cấp. Evidence/build ZIP nằm ngoài source; không tự stage logs, private research, credentials, raw conversations hoặc generated copies. LICENSE/attribution giữ nguyên.
 
-Chọn thêm từng file mới đã review; tránh git add . để không stage artifacts. Không push trực tiếp main. PR/merge/tag/release cần scope/quyền riêng và CI evidence thực. Rollback trước publish là bỏ bản candidate riêng và tiếp tục dùng baseline; không cần reset/clean/history rewrite.
+## Kiểm tra khi cập nhật feature branch đã được cấp quyền
+
+Xác minh remote main/feature HEAD và user changes, tránh áp dụng patch hai lần, đánh giá compatibility khi main đổi, regenerate manifests bằng builder hiện có, chạy validator/compile/full suite/package checks và review exact staged scope. Chỉ commit correction cần thiết và push không force trên branch được cấp; không tạo commit chỉ để retrigger CI.
+
+CI trên baseline hoặc HEAD cũ không cover correction mới; phải xác minh Windows/Ubuntu jobs và từng relevant check-run của đúng HEAD sau push. Workflow summary success trong khi check còn pending chưa đủ để đánh dấu ready; báo exact run/job/check IDs và dừng nếu trạng thái vẫn bất nhất. Behavioral execution cần authorization/runtime/fixture preregistration riêng theo [execution guide](docs/evaluation/EXECUTION_GUIDE.md). Không bắt buộc external inference API hoặc public raw evidence.
+
+Rollback trước merge: Owner có thể giữ/đóng PR và tiếp tục dùng main; nếu cần hoàn tác feature correction, tạo revert commit khi được cấp quyền, không reset/rebase/clean hoặc ghi đè user work. Editable source/manifests/builder là source of truth; ZIP chỉ là artifact bàn giao ngoài repo.

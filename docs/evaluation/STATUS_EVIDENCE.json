@@ -1,0 +1,43 @@
+{
+  "baseline_commit": "4f69295cb8c40a1be70514e4a926e67783bfeb8f",
+  "repository_version": "1.1.0",
+  "skill_version": "1.2.1",
+  "verified_at_utc": "2026-10-21T14:38:36.012Z",
+  "integration": "MERGED_TO_MAIN",
+  "pr_url": "https://github.com/Cmi5124/promt-it-ai-agent/pull/2",
+  "ci": {
+    "run_id": 39610489708,
+    "url": "https://github.com/Cmi5124/promt-it-ai-agent/actions/runs/39610489708",
+    "head_sha": "4f69295cb8c40a1be70514e4a926e67783bfeb8f",
+    "event": "push",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 119257758811,
+        "name": "validate (windows-latest)",
+        "conclusion": "success",
+        "python": "3.12.10",
+        "automated_tests_passed": 64
+      },
+      {
+        "id": 119257759535,
+        "name": "validate (ubuntu-latest)",
+        "conclusion": "success",
+        "python": "3.12.3",
+        "automated_tests_passed": 64
+      }
+    ]
+  },
+  "releases": {
+    "api_url": "https://api.github.com/repos/Cmi5124/promt-it-ai-agent/releases?per_page=100",
+    "visible_count": 0,
+    "status": "NO_VISIBLE_GITHUB_RELEASE_AT_AUDIT"
+  },
+  "behavioral": {
+    "parents": 44,
+    "executable_cases": 49,
+    "model_runs": 0,
+    "status": "NOT_RUN"
+  },
+  "local_documentation_candidate": "NOT_PUBLISHED"
+}

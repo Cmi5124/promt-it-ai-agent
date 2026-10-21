@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0-draft",
+  "record_state": "PLANNED",
+  "run_id": null,
+  "parent_run_id": null,
+  "rerun_reason": null,
+  "case_id": null,
+  "parent_case_id": null,
+  "trial_index": null,
+  "capability_track": null,
+  "applicability": null,
+  "applicability_reason": null,
+  "source_baseline_commit": "4f69295cb8c40a1be70514e4a926e67783bfeb8f",
+  "evaluation_revision": {
+    "git_commit": null,
+    "local_patch_sha256": null,
+    "manifest_sha256": null
+  },
+  "frozen_hashes": {
+    "case_catalog": null,
+    "protocol": null,
+    "rubric": null,
+    "runtime_matrix": null,
+    "core": null,
+    "skill": null,
+    "adapter": null,
+    "fixture_inventory": null,
+    "rendered_messages": null
+  },
+  "expected_behavior": null,
+  "forbidden_behavior": null,
+  "ordered_messages": [],
+  "runtime": {
+    "profile": null,
+    "model_id": null,
+    "model_version": null,
+    "checkpoint": null,
+    "weights_hash": null,
+    "tokenizer_revision": null,
+    "quantization": null,
+    "context_window": null,
+    "truncation_policy": null,
+    "inference_runtime": null,
+    "runtime_version": null,
+    "system_adapter_version": null,
+    "sampling": null,
+    "hardware": null
+  },
+  "tool_configuration": {
+    "manifest": null,
+    "schemas_sha256": null,
+    "allowed_paths": [],
+    "allowed_actions": [],
+    "denied_actions": [],
+    "network_policy": null,
+    "approval_policy": null
+  },
+  "preregistered_budgets": {
+    "timeout_seconds": null,
+    "max_tool_calls": null,
+    "external_actions": 0,
+    "trial_count": null
+  },
+  "timestamps": {
+    "preregistered_utc": null,
+    "started_utc": null,
+    "completed_utc": null
+  },
+  "actual_response": null,
+  "actual_tool_events": [],
+  "model_reported_status": null,
+  "actual_result": null,
+  "sanitized_evidence": [],
+  "reviewers": [],
+  "verdict": "NOT_RUN",
+  "failure_classification": null,
+  "failure_reason": null,
+  "snapshot_sha256": null,
+  "previous_event_sha256": null
+}

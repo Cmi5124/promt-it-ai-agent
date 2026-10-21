@@ -1,6 +1,6 @@
 # Cài đặt và activation
 
-Không có dependency ngoài Python standard library cho CLI/build/tests. Git chỉ cần cho kiểm tra metadata fixture. Không cần external inference API.
+Không có dependency ngoài Python standard library cho CLI/build/tests. Git cần cho regression metadata và real checkout fixtures; không tự cấp quyền Git trên repository sản phẩm. Không cần external inference API.
 
 Canonical folder: [skills/adaptive-project-ops](../skills/adaptive-project-ops/). Copy nguyên folder gồm SKILL.md, references, assets/templates, scripts, manifest.json, LICENSE và notices vào nơi runtime thực sự hỗ trợ. Không chỉ copy SKILL.md. Không sửa hoặc nạp snapshot v1.0.0 thay core hiện hành.
 
@@ -21,3 +21,8 @@ Dùng [adapter](../integrations/adaptive/gemma4-system-prompt.md) qua chat templ
 ## Build
 
 Sau thay đổi đã được duyệt: `python scripts/build_release.py --prepare`, chạy validators/tests, rồi `python scripts/build_release.py --output-dir ../integration-build`. Full repository candidate và standalone được tạo từ canonical source; không đưa ZIP vào Git history. Đây là candidate, không phải GitHub Release.
+
+
+## Verified integration và behavioral limits
+
+[Current status có timestamp](STATUS_CURRENT.md) liên kết evidence về integration, documentation publication, PR merge, CI/check-state và stable release; không dùng audit cũ làm trạng thái publication hiện tại. Cài/copy skill không đồng nghĩa model certification. [Behavioral protocol](evaluation/BEHAVIORAL_PROTOCOL.md) hiện chỉ chuẩn bị, A01–A44 và49 variants NOT_RUN. Historical reports giữ trạng thái theo thời điểm cũ.
